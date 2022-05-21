@@ -1,3 +1,8 @@
+//Global variables
+let computerScore = 0;
+let playerScore = 0;
+
+// Computer random choice
 function computerPlay() {
   if (Math.floor(Math.random() * 3) === 0) {
     return "rock";
@@ -8,24 +13,49 @@ function computerPlay() {
   }
 }
 
+// One round of RPS
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
-    return "It's a tie!";
+    console.log("It's a tie!");
   } else if (playerSelection === "rock" && computerSelection === "paper") {
-    return "You Lose! Paper beats Rocks";
+    computerScore++;
+    console.log("You Lose! Paper beats Rocks");
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    return "You Win! Rock beats Scissors";
+    playerScore++;
+    console.log("You Win! Rock beats Scissors");
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-    return "You Win! Paper beats Rock";
+    playerScore++;
+    console.log("You Win! Paper beats Rock");
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
-    return "You Lose! Scissors beats Paper";
+    computerScore++;
+    console.log("You Lose! Scissors beats Paper");
   } else if (playerSelection === "scissors" && computerSelection === "rock") {
-    return "You Lose! Rock beats Scissors";
+    computerScore++;
+    console.log("You Lose! Rock beats Scissors");
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    return "You Win! Scissors beats Paper";
+    playerScore++;
+    console.log("You Win! Scissors beats Paper");
   }
 }
 
-const computerSelection = computerPlay();
-const playerSelection = prompt("Rock, paper or scissors?");
-console.log(playRound(playerSelection, computerSelection));
+// Checks who is the winner
+function checkWinner() {
+  if (playerScore === computerScore) {
+    return "It's a tie!";
+  } else if (playerScore > computerScore) {
+    return "Player win!";
+  } else if (playerScore < computerScore) {
+    return "Computer win!";
+  }
+}
+
+// Play 5 rounds of RPS
+function game() {
+  for (let i = 0; i < 5; i++) {
+    let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+  }
+}
+game();
+console.log(checkWinner());
