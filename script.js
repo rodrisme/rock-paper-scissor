@@ -1,16 +1,11 @@
 //Global variables
 let computerScore = 0;
 let playerScore = 0;
+let rps = ["rock", "paper", "scissors"];
 
-// Computer random choice
+//Computer random choice
 function computerPlay() {
-  if (Math.floor(Math.random() * 3) === 0) {
-    return "rock";
-  } else if (Math.floor(Math.random() * 3) === 1) {
-    return "paper";
-  } else {
-    return "scissors";
-  }
+  return rps[Math.floor(Math.random() * rps.length)];
 }
 
 // One round of RPS
@@ -41,11 +36,11 @@ function playRound(playerSelection, computerSelection) {
 // Checks who is the winner
 function checkWinner() {
   if (playerScore === computerScore) {
-    return "It's a tie!";
+    return "Final Result: It's a tie!";
   } else if (playerScore > computerScore) {
-    return "Player win!";
+    return "Final Result: Player win!";
   } else if (playerScore < computerScore) {
-    return "Computer win!";
+    return "Final Result: Computer win!";
   }
 }
 
