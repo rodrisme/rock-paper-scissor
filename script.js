@@ -1,127 +1,64 @@
-// const rock = document.querySelector("#rock");
-// rock.addEventListener("click", () => {
-//   const playerSelection = "rock";
-//   const computerSelection = computerPlay();
-//   if (playerSelection === computerSelection) {
-//     let tie = document.querySelector("#draws");
-//     tie.textContent = ++draws;
-//   } else if (playerSelection === "rock" && computerSelection === "paper") {
-//     let scoreComputer = document.querySelector("#computer-score");
-//     scoreComputer.textContent = ++computerScore;
-//   } else {
-//     let scorePlayer = document.querySelector("#player-score");
-//     scorePlayer.textContent = ++playerScore;
-//   }
-//   winner();
-//   disableButton();
-// });
-
-// const paper = document.querySelector("#paper");
-// paper.addEventListener("click", () => {
-//   const playerSelection = "paper";
-//   const computerSelection = computerPlay();
-//   if (playerSelection === computerSelection) {
-//     let tie = document.querySelector("#draws");
-//     tie.textContent = ++draws;
-//   } else if (playerSelection === "paper" && computerSelection === "scissors") {
-//     let scoreComputer = document.querySelector("#computer-score");
-//     scoreComputer.textContent = ++computerScore;
-//   } else {
-//     let scorePlayer = document.querySelector("#player-score");
-//     scorePlayer.textContent = ++playerScore;
-//   }
-//   winner();
-//   disableButton();
-// });
-
-// const scissors = document.querySelector("#scissors");
-// scissors.addEventListener("click", () => {
-//   const playerSelection = "scissors";
-//   const computerSelection = computerPlay();
-//   if (playerSelection === computerSelection) {
-//     let tie = document.querySelector("#draws");
-//     tie.textContent = ++draws;
-//   } else if (playerSelection === "scissors" && computerSelection === "rock") {
-//     let scoreComputer = document.querySelector("#computer-score");
-//     scoreComputer.textContent = ++computerScore;
-//   } else {
-//     let scorePlayer = document.querySelector("#player-score");
-//     scorePlayer.textContent = ++playerScore;
-//   }
-//   winner();
-//   disableButton();
-// });
-
-//Global variables
 let computerScore = 0;
 let playerScore = 0;
 let draws = 0;
-let rps = ["rock", "paper", "scissors"];
+const rps = ["rock", "paper", "scissors"];
+let tie = document.querySelector("#draws");
+let scorePlayer = document.querySelector("#player-score");
+let scoreComputer = document.querySelector("#computer-score");
+const finalResult = document.querySelector("#winner");
+const reset = document.querySelector("#reset");
 
-//Computer random choice
-function computerPlay() {
+const computerPlay = () => {
   return rps[Math.floor(Math.random() * rps.length)];
-}
+};
 
-function winner() {
+const winner = () => {
   if (playerScore === 5) {
     finalResult.textContent = "The winner is the Player!";
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
   } else if (computerScore === 5) {
     finalResult.textContent = "The winner is the computer!";
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
   }
-}
-const finalResult = document.querySelector("#winner");
+};
 
-function disableButton() {
-  if (playerScore === 5 || computerScore === 5) {
-    document.querySelector("#rock").disabled = true;
-    document.querySelector("#paper").disabled = true;
-    document.querySelector("#scissors").disabled = true;
-  }
-}
-
-function playRound(playerSelection, computerSelection) {
+const playRound = (playerSelection, computerSelection) => {
   if (playerSelection === computerSelection) {
-    let tie = document.querySelector("#draws");
     tie.textContent = ++draws;
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    let scorePlayer = document.querySelector("#player-score");
     scorePlayer.textContent = ++playerScore;
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-    let scorePlayer = document.querySelector("#player-score");
     scorePlayer.textContent = ++playerScore;
-  } else if (playerSelection === scissors && computerSelection === "paper") {
-    let scorePlayer = document.querySelector("#player-score");
+  } else if (playerSelection === "scissors" && computerSelection === "paper") {
     scorePlayer.textContent = ++playerScore;
   } else {
-    let scoreComputer = document.querySelector("#computer-score");
     scoreComputer.textContent = ++computerScore;
   }
-}
+};
 
-const rock = document.querySelector("#rock");
-rock.addEventListener("click", () => {
-  const playerSelection = "rock";
-  const computerSelection = computerPlay();
-  playRound(playerSelection, computerSelection);
-  winner();
-  disableButton();
+rps.forEach((playerSelection) => {
+  document.getElementById(playerSelection).addEventListener("click", () => {
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+    winner();
+  });
 });
 
-const paper = document.querySelector("#paper");
-paper.addEventListener("click", () => {
-  const playerSelection = "paper";
-  const computerSelection = computerPlay();
-  playRound(playerSelection, computerSelection);
-  winner();
-  disableButton();
-});
+const resetGame = () => {
+  computerScore = 0;
+  scoreComputer.textContent = 0;
+  playerScore = 0;
+  scorePlayer.textContent = 0;
+  draws = 0;
+  tie.textContent = 0;
+  finalResult.textContent = "";
+  rock.disabled = false;
+  paper.disabled = false;
+  scissors.disabled = false;
+};
 
-const scissors = document.querySelector("#scissors");
-scissors.addEventListener("click", () => {
-  const playerSelection = "scissors";
-  const computerSelection = computerPlay();
-  playRound(playerSelection, computerSelection);
-  winner();
-  disableButton();
-});
+document.getElementById("reset").addEventListener("click", resetGame);
