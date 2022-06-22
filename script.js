@@ -6,9 +6,23 @@ const tie = document.querySelector("#draws");
 const scorePlayer = document.querySelector("#player-score");
 const scoreComputer = document.querySelector("#computer-score");
 const finalResult = document.querySelector("#winner");
-const reset = document.querySelector("#reset");
 const playerChoice = document.querySelector("#player-selection");
 const computerChoice = document.querySelector("#computer-selection");
+
+const restartButton = () => {
+  const buttons = document.getElementById("restart-button");
+  const resetButton = document.createElement("button");
+  resetButton.setAttribute("id", "reset");
+  resetButton.textContent = "Restart";
+  buttons.appendChild(resetButton);
+  resetButton.addEventListener("click", resetGame);
+  resetButton.addEventListener("click", removeRestartButton);
+};
+
+const removeRestartButton = () => {
+  document.getElementById("reset");
+  reset.remove();
+};
 
 const computerPlay = () => {
   return rps[Math.floor(Math.random() * rps.length)];
@@ -20,11 +34,13 @@ const winner = () => {
     rock.disabled = true;
     paper.disabled = true;
     scissors.disabled = true;
+    restartButton();
   } else if (computerScore === 5) {
     finalResult.textContent = "The winner is the computer!";
     rock.disabled = true;
     paper.disabled = true;
     scissors.disabled = true;
+    restartButton();
   }
 };
 
@@ -66,5 +82,3 @@ const resetGame = () => {
   playerChoice.textContent = ``;
   computerChoice.textContent = ``;
 };
-
-document.getElementById("reset").addEventListener("click", resetGame);
