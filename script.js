@@ -2,11 +2,13 @@ let computerScore = 0;
 let playerScore = 0;
 let draws = 0;
 const rps = ["rock", "paper", "scissors"];
-let tie = document.querySelector("#draws");
-let scorePlayer = document.querySelector("#player-score");
-let scoreComputer = document.querySelector("#computer-score");
+const tie = document.querySelector("#draws");
+const scorePlayer = document.querySelector("#player-score");
+const scoreComputer = document.querySelector("#computer-score");
 const finalResult = document.querySelector("#winner");
 const reset = document.querySelector("#reset");
+const playerChoice = document.querySelector("#player-selection");
+const computerChoice = document.querySelector("#computer-selection");
 
 const computerPlay = () => {
   return rps[Math.floor(Math.random() * rps.length)];
@@ -42,7 +44,9 @@ const playRound = (playerSelection, computerSelection) => {
 
 rps.forEach((playerSelection) => {
   document.getElementById(playerSelection).addEventListener("click", () => {
+    playerChoice.textContent = `Player chose ${playerSelection}`;
     let computerSelection = computerPlay();
+    computerChoice.textContent = `Computer chose ${computerSelection}`;
     playRound(playerSelection, computerSelection);
     winner();
   });
@@ -59,6 +63,8 @@ const resetGame = () => {
   rock.disabled = false;
   paper.disabled = false;
   scissors.disabled = false;
+  playerChoice.textContent = ``;
+  computerChoice.textContent = ``;
 };
 
 document.getElementById("reset").addEventListener("click", resetGame);
