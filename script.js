@@ -79,6 +79,6 @@ const resetGame = () => {
   rock.disabled = false;
   paper.disabled = false;
   scissors.disabled = false;
-  playerChoice.textContent = ``;
-  computerChoice.textContent = ``;
+  playerChoice.textContent = `Player chose`;
+  computerChoice.textContent = `Computer chose`;
 };
