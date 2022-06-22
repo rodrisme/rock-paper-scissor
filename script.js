@@ -13,7 +13,7 @@ const restartButton = () => {
   const buttons = document.getElementById("restart-button");
   const resetButton = document.createElement("button");
   resetButton.setAttribute("id", "reset");
-  resetButton.textContent = "Restart";
+  resetButton.textContent = "Play Again";
   buttons.appendChild(resetButton);
   resetButton.addEventListener("click", resetGame);
   resetButton.addEventListener("click", removeRestartButton);
@@ -46,15 +46,15 @@ const winner = () => {
 
 const playRound = (playerSelection, computerSelection) => {
   if (playerSelection === computerSelection) {
-    tie.textContent = ++draws;
+    tie.textContent = `Draws ${++draws}`;
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    scorePlayer.textContent = ++playerScore;
+    scorePlayer.textContent = `Player Score ${++playerScore}`;
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-    scorePlayer.textContent = ++playerScore;
+    scorePlayer.textContent = `Player Score ${++playerScore}`;
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    scorePlayer.textContent = ++playerScore;
+    scorePlayer.textContent = `Player Score ${++playerScore}`;
   } else {
-    scoreComputer.textContent = ++computerScore;
+    scoreComputer.textContent = `Computer Score ${++computerScore}`;
   }
 };
 
@@ -70,11 +70,11 @@ rps.forEach((playerSelection) => {
 
 const resetGame = () => {
   computerScore = 0;
-  scoreComputer.textContent = 0;
+  scoreComputer.textContent = "Computer Score 0";
   playerScore = 0;
-  scorePlayer.textContent = 0;
+  scorePlayer.textContent = "Player Score 0";
   draws = 0;
-  tie.textContent = 0;
+  tie.textContent = "Draws 0";
   finalResult.textContent = "";
   rock.disabled = false;
   paper.disabled = false;

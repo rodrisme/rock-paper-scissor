@@ -4,34 +4,49 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <title>Rock, paper, scissors</title>
   </head>
   <body>
-    <h1>Play against the computer. Select rock, paper or scissors. Whoever scores 5 will be the winner</h1>
-    <div id="buttons">
-    <button id="rock"><img src="imgs/rock.png" alt="rock"></button>
-    <button id="paper"><img src="imgs/paper.png" alt="paper"></button>
-    <button id="scissors"><img src="imgs/scissors.png" alt="scissors"></button>
-<!-- <button id="reset">Reset</button> -->
-</div>
-<div id="restart-button"></div>
-<h2 id="player-selection">Player chose</h2>
-<h2 id="computer-selection">Computer chose</h2>
-    <div id="container">
+    <div id="content">
+      <header>
+        <h1>
+          Play against the computer. Select rock, paper or scissors. Whoever
+          scores 5 will be the winner
+        </h1>
+      </header>
+      <div id="buttons">
+        <button id="rock"><img src="imgs/rock.png" alt="rock" /></button>
+        <button id="paper"><img src="imgs/paper.png" alt="paper" /></button>
+        <button id="scissors">
+          <img src="imgs/scissors.png" alt="scissors" />
+        </button>
+        <!-- <button id="reset">Reset</button> -->
+      </div>
+      <div id="selection">
+        <h2 id="player-selection">Player chose</h2>
+        <h2 id="computer-selection">Computer chose</h2>
+      </div>
       <div id="results">
-        <h3>Player Score</h2>
-        <p id="player-score">0</p>
-        <h3>Computer Score</h2>
-        <p id="computer-score">0</p>
-        <h3 >Draws </h3>
-        <p id="draws">0</p>
+        <!-- <h3>Player Score</h3> -->
+        <p id="player-score">Player Score 0</p>
+        <!-- <h3>Computer Score</h3> -->
+        <p id="computer-score">Computer Score 0</p>
+        <!-- <h3>Draws</h3> -->
+        <p id="draws">Draws 0</p>
+      </div>
+      <div id="announcement">
         <p id="winner"></p>
       </div>
+      <div id="restart-button"></div>
     </div>
+    <footer><p>Copyright © Rodri 2022</p></footer>
   </body>
 </html>
